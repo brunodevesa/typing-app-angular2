@@ -1,0 +1,18 @@
+<div class="input-container">
+
+    <input 
+        type="text"
+        class="form-control"
+        (keyup)="onKeyup(inputText, $event)"
+        [(ngModel)] = "inputText" 
+    >
+
+    <button class="btn btn-primary" type="button">
+            Character Counter 
+            <span><h1>{{characterCounter}}</h1></span >
+          </button>
+
+    <div class="well">
+        <h1>{{inputText}}</h1>
+    </div>
+</div>
