@@ -3,7 +3,7 @@
     <input 
         type="text"
         class="form-control"
-        (keyup)="onKeyup(inputText, $event)"
+        (input)="onKeyup(inputText, $event)"
         [(ngModel)] = "inputText" 
     >
 

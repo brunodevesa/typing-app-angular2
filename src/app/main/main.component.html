@@ -1,0 +1,27 @@
+<div class="main-style">
+
+  <div class="typing-initial-text">
+      <app-typing-initial-text [initialText]="initialText">
+
+      </app-typing-initial-text>
+  </div>
+
+  <div class="typing-input-style">
+    <app-typing-input (notifyKeyup)="onTyping($event)" (notifyOnReset)="onReset($event)">
+
+    </app-typing-input>
+  </div>
+
+  <div class="typing-results-style">
+      <app-results 
+          [initialTextTotalCharacters]="initialTextTotalCharacters"
+          [typedCorrectCharacters]="typedCorrectCharacters"
+          [characterMistaken]="characterMistaken"
+          [textWrittenCorrectly]="textWrittenCorrectly"
+          [totalCharactersTyped]="totalCharactersTyped">
+        Results here
+      </app-results>
+  </div>
+
+
+</div>
