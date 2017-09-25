@@ -1,7 +1,7 @@
 <div class="main-style">
 
   <div class="typing-initial-text">
-      <app-typing-initial-text [initialText]="initialText">
+      <app-typing-initial-text *ngIf="initialText" [initialText]="initialText">
 
       </app-typing-initial-text>
   </div>
@@ -18,7 +18,8 @@
           [typedCorrectCharacters]="typedCorrectCharacters"
           [characterMistaken]="characterMistaken"
           [textWrittenCorrectly]="textWrittenCorrectly"
-          [totalCharactersTyped]="totalCharactersTyped">
+          [totalCharactersTyped]="totalCharactersTyped"
+          [accuracyHistoric]="accuracyHistoric">
         Results here
       </app-results>
   </div>

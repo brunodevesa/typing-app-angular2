@@ -17,10 +17,24 @@
   </h1>
 
   <h1 class="accuracy">
-      <p>Accuracy</p>
-      <span>
+    <p>Accuracy</p>
+    <span>
       {{accuracy}}
     </span>
-    </h1>
+  </h1>
 
+  <h1 class="accuracy-historic">
+    <p>Accuracy Historic</p>
+    <span *ngFor="let item of accuracyHistoric">
+      {{item}}
+    </span>
+  </h1>
+
+  <h1 class="accuracy-historic">
+      <p>Global Accuracy</p>
+      <span>
+        {{globalAccuracy}}
+      </span>
+    </h1>
+    
 </div>

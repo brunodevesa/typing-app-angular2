@@ -30,19 +30,24 @@ export class TypingInitialTextComponent implements OnInit, AfterViewInit, OnChan
 
 
   ngOnInit() {
-    this.el.nativeElement.innerText = "";
-    this.splitedText = this.splitInitialString(this.initialText)
-    this.splitedTextWithColor = [];
-    this.makeColorSplitedText(this.splitedText, 'black');
+    if (this.initialText) {
+
+      this.el.nativeElement.innerText = "";
+      this.splitedText = this.splitInitialString(this.initialText)
+      this.splitedTextWithColor = [];
+      this.makeColorSplitedText(this.splitedText, 'black');
+    }
 
   }
 
 
   public splitInitialString(someString: string) {
-    return someString.split("")
+    if (someString) {
+      return someString.split("")
+    }
   }
 
-  public makeColorSplitedText(splitedText: string[], textColor:string): any {
+  public makeColorSplitedText(splitedText: string[], textColor: string): any {
     this.splitedText.forEach((elem, index) => {
       this.splitedTextWithColor.push({
         letter: elem,
@@ -54,12 +59,15 @@ export class TypingInitialTextComponent implements OnInit, AfterViewInit, OnChan
   }
 
   public putColorSplitedTextInDom() {
-    this.splitedTextWithColor.forEach((elem, index) => {
-      this.el.nativeElement
-        .insertAdjacentHTML('beforeend', '<span class="two" style="color: ' + this.splitedTextWithColor[index].color + ' ">' +
-        this.splitedTextWithColor[index].letter + '</span>');
+    if (this.splitedTextWithColor) {
 
-    })
+      this.splitedTextWithColor.forEach((elem, index) => {
+        this.el.nativeElement
+          .insertAdjacentHTML('beforeend', '<span class="two" style="color: ' + this.splitedTextWithColor[index].color + ' ">' +
+          this.splitedTextWithColor[index].letter + '</span>');
+
+      })
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -69,27 +77,41 @@ export class TypingInitialTextComponent implements OnInit, AfterViewInit, OnChan
   }
 
   // on reset
-  public onReset(){
-    this.el.nativeElement.innerText = "";
-    // this.el.nativeElement.value = "";
-    this.splitedTextWithColor = [];
-    this.makeColorSplitedText(this.splitedText, 'black');
-    this.putColorSplitedTextInDom();
+  public onReset(newText: string) {
+    if (newText) {
+
+      this.splitedText = null;
+      this.splitedText = this.splitInitialString(newText)
+      this.splitedTextWithColor = null;
+
+
+
+      this.el.nativeElement.innerText = "";
+      this.splitedTextWithColor = [];
+      this.makeColorSplitedText(this.splitedText, 'black');
+      this.putColorSplitedTextInDom();
+    }
   }
-  
+
   // ToDo change this to use ngClass
   public makeCorrectCharacterBlue(characterIndex: number) {
-    this.splitedTextWithColor[characterIndex -1 ].color = 'blue';
-    this.el.nativeElement.innerText = "";
-    this.putColorSplitedTextInDom();
-    // this.el.nativeElement.focus();
+    if (this.splitedTextWithColor) {
+
+      this.splitedTextWithColor[characterIndex - 1].color = 'blue';
+      this.el.nativeElement.innerText = "";
+      this.putColorSplitedTextInDom();
+      // this.el.nativeElement.focus();
+    }
   }
 
   public makeWrongCharacterRed(characterIndex: number) {
-    this.splitedTextWithColor[characterIndex -1 ].color = 'red';
-    this.el.nativeElement.innerText = "";
-    this.putColorSplitedTextInDom();
-    // this.el.nativeElement.focus();
+    if (this.splitedTextWithColor) {
+
+      this.splitedTextWithColor[characterIndex - 1].color = 'red';
+      this.el.nativeElement.innerText = "";
+      this.putColorSplitedTextInDom();
+      // this.el.nativeElement.focus();
+    }
   }
 
 }
