@@ -13,16 +13,27 @@ import { ResultsComponent } from 'app/results/results.component';
 // to remove when the http service is ready to fetch sentences from there
 // how to use a file just for constants by the way ?
 
+export interface ResultsBagInterface {
+  sentence: number,
+  correctCharacters: number,
+  mistakes: number
+  accuracy: number,
+  globalAccuracy: number
+}
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.less'],
   inputs: ['notifyKeyup', 'notifyOnReset'],
-  outputs: ['text', 'initialTextTotalCharacters', 
-          'typedCorrectCharacters', 'characterMistaken', 'textWrittenCorrectly', 'totalCharactersTyped'
-          ,'accuracyHistoric']
+  outputs: ['text', 'initialTextTotalCharacters',
+    'typedCorrectCharacters', 'characterMistaken', 'textWrittenCorrectly', 'totalCharactersTyped'
+    , 'accuracyHistoric']
 })
+
+
+
 export class MainComponent implements OnInit {
 
   @ViewChild(TypingInitialTextComponent) typingInitialTextComponent;
@@ -52,8 +63,10 @@ export class MainComponent implements OnInit {
   public sentences: any
   public sentencesIndex: number;
 
-  public accuracyHistoric : number[]
+  public accuracyHistoric: number[]
 
+
+  public resultsBag : ResultsBagInterface;
 
   ngOnInit() {
 
@@ -65,7 +78,7 @@ export class MainComponent implements OnInit {
 
         this.sentencesIndex = 0
         this.onMainReset();
-   
+
       })
 
 
@@ -153,8 +166,8 @@ export class MainComponent implements OnInit {
 
     // When user finishes typing the text, fetch another sentence:
     if (Number(this.typedCorrectCharacters) === this.initialTextTotalCharacters) {
-   
-    
+
+
       // get accuracy from results and save it
       this.accuracyHistoric.push(this.resultsComponent.accuracy)
 

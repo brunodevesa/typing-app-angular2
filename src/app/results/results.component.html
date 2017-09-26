@@ -1,40 +1,49 @@
-<div class="results-container">
+<div class="well">
 
-
-
-  <h1 class="correct-character">
-    <p>Correct Characters</p>
-    <span>
-      {{typedCorrectCharacters}} of {{initialTextTotalCharacters}}
-    </span>
-  </h1>
-
-  <h1 class="mistakes">
-    <p>Mistakes</p>
-    <span>
-    {{characterMistaken}}
-  </span>
-  </h1>
-
-  <h1 class="accuracy">
-    <p>Accuracy</p>
-    <span>
-      {{accuracy}}
-    </span>
-  </h1>
-
-  <h1 class="accuracy-historic">
-    <p>Accuracy Historic</p>
-    <span *ngFor="let item of accuracyHistoric">
-      {{item}}
-    </span>
-  </h1>
-
-  <h1 class="accuracy-historic">
-      <p>Global Accuracy</p>
-      <span>
-        {{globalAccuracy}}
-      </span>
-    </h1>
+  <div class="results-container">
     
+    
+    <div class="results">
+      
+      <h4 class="correct-character">
+        <p>Correct Characters</p>
+        <span>
+          {{typedCorrectCharacters}} of {{initialTextTotalCharacters}}
+        </span>
+      </h4>
+      
+      <h4 class="mistakes" >
+        <p>Mistakes</p>
+        <span style="color:red">
+          {{characterMistaken}}
+        </span>
+      </h4>
+      
+      <h4 class="accuracy">
+        <p>Accuracy</p>
+        <span>
+          {{accuracy}}
+        </span>
+      </h4>
+      
+    </div>
+    <div class="global-results">
+      
+      
+      <h2 class="accuracy-historic">
+        <p>Accuracy Historic</p>
+        <span *ngFor="let item of accuracyHistoric">
+          {{item}}
+        </span>
+      </h2>
+      
+      <h2 class="accuracy-historic">
+        <p>Global Accuracy</p>
+        <span>
+          {{globalAccuracy}}
+        </span>
+      </h2>
+    </div>
+    
+  </div>
 </div>
